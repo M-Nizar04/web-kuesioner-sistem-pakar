@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuesioner Pengujian Usability - Sistem Pakar Asam Lambung</title>
+  <meta name="description" content="Kuesioner pengujian usability untuk Sistem Pakar Asam Lambung oleh Moh. Nizar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <div class="toast-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <div class="toast-content">
+      <strong>Data berhasil dikirim &amp; disimpan!</strong>
+      <span>Jawaban Anda sudah tercatat di database.</span>
+    </div>
+  </div>
+
+  <!-- ===== MAIN PAGE ===== -->
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header class="header fade-in">
+      <div class="header-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4" />
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+        </svg>
+        USE Questionnaire
+      </div>
+      <h1>Kuesioner Pengujian Usability<br />Sistem Pakar Asam Lambung</h1>
+      <p class="header-subtitle">Oleh: Moh. Nizar</p>
+      <p class="header-desc">Mohon pilih tingkat persetujuan Anda pada setiap pernyataan di bawah ini. Semua pertanyaan
+        wajib diisi untuk dapat mengirimkan kuesioner.</p>
+    </header>
+
+    <form id="questionnaireForm" novalidate>
+
+      <!-- SECTION 1: RESPONDENT DATA -->
+      <div class="fade-in">
+        <div class="section-label">
+          <div class="section-num">1</div>
+          <div>
+            <h2>Data Responden</h2>
+            <p>Informasi pribadi Anda bersifat rahasia.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="nama">Nama Lengkap <span class="req">*</span></label>
+              <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama lengkap Anda"
+                required autocomplete="name" />
+              <span class="error-msg" id="err-nama">Nama lengkap tidak boleh kosong.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="usia">Usia <span class="req">*</span></label>
+              <input type="number" id="usia" name="usia" class="form-control" placeholder="Contoh: 25" min="1" max="120"
+                required />
+              <span class="error-msg" id="err-usia">Usia tidak boleh kosong.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Jenis Kelamin <span class="req">*</span></label>
+              <select id="gender" name="gender" class="form-control" required>
+                <option value="" disabled selected>Pilih jenis kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+              </select>
+              <span class="error-msg" id="err-gender">Jenis kelamin harus dipilih.</span>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="pekerjaan">Pekerjaan <span class="req">*</span></label>
+              <input type="text" id="pekerjaan" name="pekerjaan" class="form-control"
+                placeholder="Contoh: Mahasiswa, Karyawan, dll." required autocomplete="organization-title" />
+              <span class="error-msg" id="err-pekerjaan">Pekerjaan tidak boleh kosong.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 2: QUESTIONNAIRE -->
+      <div class="fade-in">
+        <div class="section-label">
+          <div class="section-num">2</div>
+          <div>
+            <h2>Pernyataan Kuesioner (USE)</h2>
+            <p>15 pernyataan — pilih salah satu skala untuk setiap pernyataan.</p>
+          </div>
+        </div>
+
+        <div class="progress-bar-wrap">
+          <div class="progress-info">
+            <span>Progress pengisian</span>
+            <span><strong id="progress-count">0</strong> / 15 dijawab</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="questions-list" id="questions-list">
+          <!-- Pertanyaan di-render otomatis oleh script.js -->
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-wrap">
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span class="spinner"></span>
+          Submit Kuesioner
+        </button>
+        <p class="submit-error" id="submitError"></p>
+      </div>
+
+    </form>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Kuesioner Pengujian Usability &mdash; <strong>Sistem Pakar Asam Lambung</strong></p>
+      <p style="margin-top:4px;">Dibuat oleh <strong>Moh. Nizar</strong> &copy; <span id="current-year"></span></p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
