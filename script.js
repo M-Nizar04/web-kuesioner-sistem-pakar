@@ -13,21 +13,36 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKyF7BQVcfmk
 
 /* ---- DATA PERTANYAAN ---- */
 const QUESTIONS = [
-  "Aplikasi web ini membantu saya mendiagnosis awal penyakit asam lambung dengan lebih cepat.",
-  "Hasil diagnosis dan saran penanganan yang diberikan oleh sistem pakar ini sangat bermanfaat bagi saya.",
-  "Aplikasi ini membuat saya lebih sadar dan paham akan kondisi kesehatan lambung saya.",
-  "Aplikasi ini memberikan informasi penyakit asam lambung yang akurat dan sesuai dengan gejala yang saya rasakan.",
-  "Aplikasi web ini sangat mudah digunakan, bahkan untuk orang yang awam teknologi sekalipun.",
-  "Saya dapat dengan mudah menemukan menu konsultasi dan mengisi gejala yang saya alami.",
-  "Bahasa, istilah, dan pertanyaan gejala di dalam aplikasi ini sangat mudah dipahami.",
-  "Aplikasi ini berjalan dengan lancar dan tidak ada fitur yang eror saat saya melakukan konsultasi.",
-  "Saya bisa langsung menggunakan aplikasi ini tanpa perlu membaca petunjuk atau panduan penggunaan terlebih dahulu.",
-  "Alur untuk melakukan konsultasi sangat mudah dipelajari.",
-  "Saya tidak menemukan kebingungan sama sekali saat pertama kali mencoba aplikasi ini.",
-  "Saya merasa sangat puas dengan tampilan (desain) dan kinerja dari aplikasi sistem pakar ini.",
-  "Aplikasi web ini berfungsi dengan sangat baik sesuai dengan yang saya harapkan.",
-  "Saya merasa nyaman menggunakan aplikasi ini untuk mengecek kondisi lambung saya.",
-  "Saya akan merekomendasikan aplikasi ini kepada orang lain yang membutuhkan informasi terkait penyakit asam lambung."
+  "Aplikasi ini membantu saya melakukan pengecekan awal terhadap gejala penyakit asam lambung yang saya alami.",
+  "Aplikasi ini membantu saya memperoleh informasi diagnosis awal dengan lebih cepat dibandingkan mencari informasi secara manual.",
+  "Aplikasi ini bermanfaat dalam membantu saya mengenali kemungkinan penyakit asam lambung berdasarkan gejala yang saya rasakan.",
+  "Aplikasi ini membantu saya lebih memahami kondisi kesehatan saya sendiri terkait gejala asam lambung yang dialami.",
+  "Aplikasi ini memudahkan saya mendapatkan gambaran diagnosis awal tanpa harus langsung memeriksakan diri ke fasilitas kesehatan.",
+  "Aplikasi ini menghemat waktu saya dalam mencari informasi awal mengenai kondisi kesehatan yang saya alami.",
+  "Aplikasi ini sesuai dengan kebutuhan saya untuk mengetahui kemungkinan diagnosis penyakit asam lambung.",
+  "Aplikasi ini menjalankan seluruh fungsi konsultasi dan diagnosis sesuai dengan yang saya harapkan.",
+  "Aplikasi ini mudah digunakan.",
+  "Tampilan dan alur penggunaan aplikasi ini sederhana dan tidak membingungkan.",
+  "Aplikasi ini nyaman digunakan (user friendly).",
+  "Langkah-langkah untuk melakukan konsultasi hingga memperoleh hasil diagnosis tidak berbelit-belit.",
+  "Aplikasi ini fleksibel digunakan kapan saja selama perangkat terhubung ke internet.",
+  "Saya tidak memerlukan usaha khusus untuk dapat menggunakan aplikasi ini.",
+  "Saya dapat menggunakan aplikasi ini tanpa harus membaca petunjuk tertulis terlebih dahulu.",
+  "Saya tidak menemukan tampilan atau fungsi yang tidak konsisten selama menggunakan aplikasi ini.",
+  "Aplikasi ini cocok digunakan, baik oleh pengguna yang baru pertama kali mencoba maupun yang sudah terbiasa.",
+  "Saya dapat memperbaiki kesalahan saat mengisi data gejala dengan mudah dan cepat.",
+  "Saya selalu berhasil menyelesaikan proses konsultasi setiap kali menggunakan aplikasi ini.",
+  "Saya dapat mempelajari cara menggunakan aplikasi ini dengan cepat.",
+  "Saya mudah mengingat cara menggunakan aplikasi ini meskipun sudah tidak membukanya dalam beberapa waktu.",
+  "Cara penggunaan aplikasi ini mudah dipelajari, bahkan bagi pengguna baru.",
+  "Saya cepat terbiasa dan mahir menggunakan seluruh fitur konsultasi pada aplikasi ini.",
+  "Saya merasa puas dengan aplikasi ini secara keseluruhan.",
+  "Saya akan merekomendasikan aplikasi ini kepada orang lain yang membutuhkan informasi awal terkait asam lambung.",
+  "Ada kesan menyenangkan yang saya rasakan saat menggunakan aplikasi ini.",
+  "Aplikasi ini bekerja sesuai dengan yang saya harapkan.",
+  "Secara keseluruhan, aplikasi ini sangat baik.",
+  "Saya merasa aplikasi seperti ini penting untuk dimiliki dan digunakan masyarakat umum.",
+  "Pengalaman saya menggunakan aplikasi ini menyenangkan."
 ];
 
 const SCALE = [
@@ -173,7 +188,7 @@ function validateForm() {
 function exportCSV(data) {
   const headers = [
     'Nama', 'Usia', 'Gender', 'Pekerjaan',
-    ...Array.from({ length: 15 }, (_, i) => `Q${i + 1}`),
+    ...Array.from({ length: QUESTIONS.length }, (_, i) => `Q${i + 1}`),
     'Total Skor'
   ];
 
