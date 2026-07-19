@@ -57,9 +57,23 @@ const SCALE = [
 const list = document.getElementById('questions-list');
 
 QUESTIONS.forEach((qText, idx) => {
+  // Cek indeks untuk menyisipkan header kategori
+  let categoryTitle = '';
+  if (idx === 0) categoryTitle = 'A. Usefulness (Kegunaan)';
+  else if (idx === 8) categoryTitle = 'B. Ease of Use (Kemudahan Penggunaan)';
+  else if (idx === 19) categoryTitle = 'C. Ease of Learning (Kemudahan Dipelajari)';
+  else if (idx === 23) categoryTitle = 'D. Satisfaction (Kepuasan Pengguna)';
+
+  if (categoryTitle) {
+    const header = document.createElement('div');
+    header.className = 'category-header fade-in';
+    header.innerHTML = `<h3>${categoryTitle}</h3>`;
+    list.appendChild(header);
+  }
+
   const qNum = idx + 1;
   const card = document.createElement('div');
-  card.className = 'question-card';
+  card.className = 'question-card fade-in';
   card.id = `q-card-${qNum}`;
 
   const optionsHTML = SCALE.map(s => `

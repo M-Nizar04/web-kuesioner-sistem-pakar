@@ -733,3 +733,18 @@ select.form-control option {
     transition: none;
   }
 }
+
+.category-header {
+  margin: 32px 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--border-strong);
+}
+.category-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sage-dark);
+  letter-spacing: -0.01em;
+}
+.category-header:first-child {
+  margin-top: 4px;
+}
